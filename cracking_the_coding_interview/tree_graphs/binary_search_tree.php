@@ -26,32 +26,46 @@ class BinarySearchTree {
       $this->rootNode = $newNode;
     }
     else{
-      $temp = $previous = $this->rootNode;
+      $temp = $this->rootNode;
 
-      while($temp->node){
-
+      while($temp){
         $previous = $temp;
         if($temp->node >= $data){
-          $temp = $temp->node->left;
+          $temp = $temp->left;
           if(!$temp){
             $previous->left = $newNode;
           }
         }
         else{
-          $temp = $temp->node->right;
+          $temp = $temp->right;
           if(!$temp){
             $previous->right = $newNode;
           }
         }
-
       }
+    }
+  }
+
+  public function preOrderTraversal($node){
+    if($node){
+      echo ' '.$node->node;
+      $this->preOrderTraversal($node->left);
+      $this->preOrderTraversal($node->right);
+    }
+  }
+
+  public function postOrderTraversal($node){
+    if($node){
+      $this->postOrderTraversal($node->left);
+      $this->postOrderTraversal($node->right);
+      echo ' '.$node->node;
     }
   }
 
   public function inorderTraversal($node){
     if($node){
       $this->inorderTraversal($node->left);
-      echo $this->inorderTraversal($node->node);
+      echo ' '.$node->node;
       $this->inorderTraversal($node->right);
     }
   }
@@ -64,4 +78,6 @@ $binarySearchTree->insert(10);
 $binarySearchTree->insert(14);
 $binarySearchTree->insert(5);
 $binarySearchTree->insert(1);
-$binarySearchTree->inorderTraversal($binarySearchTree->rootNode);
+echo $binarySearchTree->inorderTraversal($binarySearchTree->rootNode)." </br> ";
+echo $binarySearchTree->postOrderTraversal($binarySearchTree->rootNode)." </br> ";
+echo $binarySearchTree->preOrderTraversal($binarySearchTree->rootNode)." </br> ";

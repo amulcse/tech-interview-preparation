@@ -18,12 +18,12 @@ Class DistinctUnionIterator implements Iterator {
   }
 
   public function current() {
-    while($this->valid() && in_array($this->curretIterator->current(),$this->uniqueResults)){
+    while(in_array($this->curretIterator->current(),$this->uniqueResults)){
       $this->next();
     }
     $current = $this->curretIterator->current();
     $this->uniqueResults[] = $current;
-      return $current;
+    return $current;
   }
 
   public function key() {

@@ -75,6 +75,17 @@ func (ll *SingleLL) Display() {
 	fmt.Println("nil")
 }
 
+func (ll *SingleLL) DisplayLastKElement(n *Node, k int) int {
+	if n == nil {
+		return 0
+	}
+	c := ll.DisplayLastKElement(n.next, k) + 1
+	if c == k {
+		fmt.Println(n.data)
+	}
+	return c
+}
+
 func main() {
 	ll := SingleLL{}
 	ll.InsertAtEnd(12)
@@ -92,4 +103,6 @@ func main() {
 	ll.InsertAtEnd(21)
 
 	ll.Display()
+
+	ll.DisplayLastKElement(ll.head, 3)
 }

@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "heap-js": "^2.6.0"
+  },
+  
+  "type": "module"
+}
